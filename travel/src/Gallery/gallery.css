@@ -1,0 +1,112 @@
+* {
+  box-sizing: border-box;
+}
+
+.gallery {
+  position: relative;
+  height: 200px;
+}
+
+.gallery_fullscreen {
+  position: relative;
+  height: 85vh;
+}
+
+.gallery_image {
+  position: absolute;
+  height: 100%;
+  opacity: 0;
+  transition: all 2s;
+  cursor: pointer;
+}
+
+.gallery_image_shown {
+  opacity: 1;
+  transition: all 2s;
+}
+
+
+.image_wrapper {
+  height: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.caption-container {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  background-color: rgba(34, 34, 34, 0.8);
+  padding: 10px 16px;
+  vertical-align: middle;
+  color: white;
+  /* height: 20%; */
+  z-index: 10;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.caption {
+  margin: 0;
+}
+
+.preview_item {
+  opacity: 0.6;
+  cursor: pointer;
+  height: 50px;
+}
+
+.preview_item_active {
+  opacity: 1;
+}
+
+.button_prev, .button_next {
+  position: absolute;
+  width: 20px;
+  height: 45px;
+  font-size: 30px;
+  text-align: center;
+  vertical-align: middle;
+  color: white;
+  z-index: 10;
+  bottom: 50%;
+  transform: translateY(50%);
+  text-shadow: 0 0 3px black;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 5px;
+}
+
+.button_prev:hover, .button_next:hover {
+  background-color: rgba(34, 34, 34, 0.4);
+}
+
+.button_prev:active, .button_next:active {
+  box-shadow: 0 0 5px 5px rgba(34, 34, 34, 0.4);
+  font-size: 35px;
+  height: 50px;
+}
+
+.button_prev {
+  left: 10px;
+}
+
+.button_next {
+  right: 10px;
+}
+
+.full_screen_button {
+  color: white;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.full_screen_button:hover {
+  box-shadow: 0 0 2px 1px white;
+}

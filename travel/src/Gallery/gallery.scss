@@ -5,26 +5,53 @@
 .gallery {
   position: relative;
   height: 200px;
+
+  &_fullscreen {
+    position: relative;
+    height: 85vh;
+  }
+
+  &_wrapper {
+    height: 300px;
+
+    @media screen and (max-width: 600px) {
+      height: 250px;
+    }
+  }
+
+  &_image {
+    position: absolute;
+    height: 100%;
+    opacity: 0;
+    transition: all 2s;
+    cursor: pointer;
+
+    &_shown {
+      opacity: 1;
+      transition: all 2s;
+    }
+  }
 }
 
-.gallery_fullscreen {
-  position: relative;
-  height: 85vh;
-}
+.caption {
+  margin: 0;
 
-.gallery_image {
-  position: absolute;
-  height: 100%;
-  opacity: 0;
-  transition: all 2s;
-  cursor: pointer;
-}
+  &_container {
+     position: absolute;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(34, 34, 34, 0.8);
+    padding: 10px 16px;
+    vertical-align: middle;
+    color: white;
+    z-index: 10;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 
-.gallery_image_shown {
-  opacity: 1;
-  transition: all 2s;
-}
 
+}
 
 .image_wrapper {
   height: 100%;
@@ -33,33 +60,24 @@
   justify-content: center;
 }
 
-.caption-container {
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  background-color: rgba(34, 34, 34, 0.8);
-  padding: 10px 16px;
-  vertical-align: middle;
-  color: white;
-  /* height: 20%; */
-  z-index: 10;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.caption {
-  margin: 0;
-}
-
 .preview_item {
   opacity: 0.6;
   cursor: pointer;
   height: 50px;
-}
+  height: 100px !important;
 
-.preview_item_active {
-  opacity: 1;
+  @media screen and (max-width: 600px) {
+    height: 50px !important;
+  }
+
+  &_active {
+    opacity: 1;
+    height: 100px !important;
+
+    @media screen and (max-width: 600px) {
+      height: 50px !important;
+    }
+  }
 }
 
 .button_prev, .button_next {
@@ -105,8 +123,12 @@
   transform: translateY(-50%);
   cursor: pointer;
   border-radius: 5px;
+
+  &:hover {
+    box-shadow: 0 0 2px 1px white; 
+  }
 }
 
-.full_screen_button:hover {
-  box-shadow: 0 0 2px 1px white;
-}
+
+
+

@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React, { useRef, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import mapboxgl from 'mapbox-gl';
 import getBoundaryColor from './getBoundaryColor';
 
@@ -66,6 +66,10 @@ const CountryMap = ({ data }) => {
       <div className="map-container" ref={mapContainer} />
     </div>
   );
+};
+
+CountryMap.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default CountryMap;

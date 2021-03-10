@@ -36,7 +36,6 @@ const CountryPage = () => {
       fetch(weatherUrl).then((res) => res.json()),
     ]).then(
       ([country, exchangeRatesInf, weather]) => {
-        console.log(country);
         const weatherState = weather.list[0];
         const { rates } = exchangeRatesInf;
         setCountryInf({ country, rates, weatherState });

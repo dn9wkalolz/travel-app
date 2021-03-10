@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 const DataTime = ({ language, timeZone }) => {
   const [time, setTime] = useState('');
@@ -31,6 +31,11 @@ const DataTime = ({ language, timeZone }) => {
       <span>{time}</span>
     </div>
   );
+};
+
+DataTime.propTypes = {
+  language: PropTypes.string.isRequired,
+  timeZone: PropTypes.string.isRequired,
 };
 
 export default DataTime;

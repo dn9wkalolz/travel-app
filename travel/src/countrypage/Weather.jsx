@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import getIcon from './getWeatherIcons';
 
 const Weather = ({ weatherState }) => {
@@ -24,6 +24,10 @@ const Weather = ({ weatherState }) => {
       </div>
     </div>
   );
+};
+
+Weather.propTypes = {
+  weatherState: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default Weather;

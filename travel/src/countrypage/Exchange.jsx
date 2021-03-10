@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Exchange = ({ rates }) => {
   const { EUR, USD, RUB } = rates;
@@ -11,6 +11,10 @@ const Exchange = ({ rates }) => {
       <span>{`RUB: ${RUB.toFixed(2)}`}</span>
     </div>
   );
+};
+
+Exchange.propTypes = {
+  rates: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default Exchange;

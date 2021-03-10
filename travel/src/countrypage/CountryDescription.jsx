@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const CountryDescription = ({ countryInf }) => {
   const { country } = countryInf;
@@ -15,6 +15,10 @@ const CountryDescription = ({ countryInf }) => {
       </div>
     </div>
   );
+};
+
+CountryDescription.propTypes = {
+  countryInf: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default CountryDescription;

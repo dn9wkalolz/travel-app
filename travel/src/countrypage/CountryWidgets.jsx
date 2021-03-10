@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
 import DataTime from './DataTime';
 import Exchange from './Exchange';
 import Weather from './Weather';
@@ -14,6 +14,11 @@ const CountryWidgets = ({ data, countryInf }) => {
       <Exchange {...{ rates }} />
     </div>
   );
+};
+
+CountryWidgets.propTypes = {
+  data: PropTypes.instanceOf(Object).isRequired,
+  countryInf: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default CountryWidgets;

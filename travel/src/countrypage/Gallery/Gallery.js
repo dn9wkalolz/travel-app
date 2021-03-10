@@ -10,13 +10,12 @@ import { Fullscreen, useFullscreen } from 'react-fullscreen-html';
 import FullscreenIcon from '@material-ui/icons/Fullscreen';
 import FullscreenExitIcon from '@material-ui/icons/FullscreenExit';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper,
     position: 'relative',
   },
   gridList: {
@@ -25,8 +24,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Gallery = ({ galleryImages }) => {
+const Gallery = ({ countryInf }) => {
   const [count, setCount] = useState(0);
+  const { country } = countryInf;
+  const { galleryImages } = country[0];
   const classes = useStyles();
   const screen = useFullscreen();
   const countDecrease = () => {
@@ -47,7 +48,7 @@ const Gallery = ({ galleryImages }) => {
             {galleryImages.map((item, index) => (
               <div
                 className={index === count ? 'gallery_image_shown gallery_image' : 'gallery_image'}
-                key={item}
+                key={item.mainImage}
                 itemID={index}
               >
                 <img height="100%" src={item.mainImage} alt={item.alt} />
@@ -55,7 +56,9 @@ const Gallery = ({ galleryImages }) => {
             ))}
             <div className="caption_container">
               { screen.active ? <FullscreenExitIcon className="full_screen_button" onClick={screen.exit} /> : <FullscreenIcon className="full_screen_button" onClick={screen.enter} />}
-              <p className="caption">{galleryImages[count].description}</p>
+              <p className={screen.active ? 'caption_fullscreen' : 'caption'}>
+                {screen.active ? galleryImages[count].description : galleryImages[count].alt}
+              </p>
             </div>
             <div
               className="button_prev"
@@ -78,12 +81,12 @@ const Gallery = ({ galleryImages }) => {
             <GridList className={classes.gridList} cols={6}>
               {galleryImages.map((item, index) => (
                 <GridListTile
-                  key={item}
+                  key={item.thumbnail}
                   itemID={index}
                   className={index === count ? 'preview_item_active' : 'preview_item'}
                   onClick={() => setCount(index)}
                 >
-                  <img src={item.thimbnail} alt={item.alt} />
+                  <img src={item.thumbnail} height="100" alt={item.alt} />
                 </GridListTile>
               ))}
             </GridList>
@@ -95,7 +98,7 @@ const Gallery = ({ galleryImages }) => {
 };
 
 Gallery.propTypes = {
-  galleryImages: PropTypes.instanceOf(Array).isRequired,
+  countryInf: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default Gallery;

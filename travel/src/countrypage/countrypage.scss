@@ -1,54 +1,83 @@
-@import url('https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css');
+@import url("https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,900&display=swap");
+
+* {
+  font-family: "Roboto", sans-serif;
+}
 
 .country {
-    &__container {
-        display: flex;
+  &__container {
+    display: flex;
+  }
+  &__information,
+  &__widgets {
+    display: flex;
+    flex-direction: column;
+  }
+  &__information {
+    flex-basis: 74%;
+    padding-bottom: 20px;
+  }
+  &__widgets {
+    flex-basis: 25%;
+    &__exchange {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    &__information,&__widgets {
-        display: flex;
-        flex-direction: column;
+  }
+  &__description {
+    &_town_name {
+      text-align: center;
     }
-    &__information {
-        flex-basis: 74%;
+    &_text {
+      margin: 50px 0;
+      text-align: justify;
+      text-indent: 20px;
     }
-    &__widgets {
-        flex-basis: 25%;
-        &__exchange {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+
+    &_image {
+      width: 100%;
     }
-    &__description {
-        display: flex;
-    }
+  }
 }
 
-.map-container {
+.map {
+  &_wrapper {
+    position: relative;
+    height: 400px;
+  }
+  &-container {
     position: absolute;
-    width: 600px;
-    height: 500px;
+    width: 100%;
+    height: 400px;
+    margin-bottom: 20px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
 }
-     
 .sidebar {
-    width: 600px;
-    background-color: rgba(35, 55, 75, 0.9);
-    color: #ffffff;
-    border-radius: 4px;
+  padding-left: 5px;
+  width: 100%;
+  background-color: rgba(35, 55, 75, 0.9);
+  color: #ffffff;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .weather {
-    &__forecast {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    &__description {
-        display: flex;
-        flex-direction: column;
-    }
+  &__forecast {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__description {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
-h3,.country__widgets__datatime {
-    text-align: center;
+h3,
+.country__widgets__datatime {
+  text-align: center;
 }

@@ -7,11 +7,13 @@ const CountryDescription = ({ countryInf }) => {
   return (
     <div className="country__description">
       <div>
-        <img src={mainImage} width="250" height="170" alt={alt} />
-        <p>{alt}</p>
+        <img className="country__description_image" src={mainImage} alt={alt} />
+        <h1 className="country__description_town_name">{alt}</h1>
       </div>
       <div>
-        {description}
+        <p className="country__description_text">
+          {description}
+        </p>
       </div>
     </div>
   );

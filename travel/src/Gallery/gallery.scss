@@ -37,7 +37,7 @@
   margin: 0;
 
   &_container {
-     position: absolute;
+    position: absolute;
     width: 100%;
     text-align: center;
     background-color: rgba(34, 34, 34, 0.8);
@@ -49,8 +49,6 @@
     left: 50%;
     transform: translateX(-50%);
   }
-
-
 }
 
 .image_wrapper {
@@ -80,7 +78,8 @@
   }
 }
 
-.button_prev, .button_next {
+.button_prev,
+.button_next {
   position: absolute;
   width: 20px;
   height: 45px;
@@ -97,11 +96,13 @@
   border-radius: 5px;
 }
 
-.button_prev:hover, .button_next:hover {
+.button_prev:hover,
+.button_next:hover {
   background-color: rgba(34, 34, 34, 0.4);
 }
 
-.button_prev:active, .button_next:active {
+.button_prev:active,
+.button_next:active {
   box-shadow: 0 0 5px 5px rgba(34, 34, 34, 0.4);
   font-size: 35px;
   height: 50px;
@@ -125,10 +126,6 @@
   border-radius: 5px;
 
   &:hover {
-    box-shadow: 0 0 2px 1px white; 
+    box-shadow: 0 0 2px 1px white;
   }
 }
-
-
-
-

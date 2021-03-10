@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Gallery = ({ galleryImages = [1] }) => {
+const Gallery = ({ galleryImages }) => {
   const [count, setCount] = useState(0);
   const classes = useStyles();
   const screen = useFullscreen();
@@ -95,8 +95,7 @@ const Gallery = ({ galleryImages = [1] }) => {
 };
 
 Gallery.propTypes = {
-  // eslint-disable-next-line react/require-default-props
-  galleryImages: PropTypes.shape([]),
+  galleryImages: PropTypes.instanceOf(Array).isRequired,
 };
 
 export default Gallery;

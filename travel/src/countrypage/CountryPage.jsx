@@ -25,17 +25,18 @@ const CountryPage = () => {
     const dayCount = 1;
     const id = '238369625c38823901147f9e59ee369d';
     const units = 'metric';
-    const url = 'https://oktravel.herokuapp.com/countries';
-    const url2 = `https://api.exchangeratesapi.io/latest?base=${currencyName}`;
-    const url3Base = 'https://api.openweathermap.org/data/2.5/forecast?';
-    const url3 = `${url3Base}lat=${latitude}&lon=${longitude}&lang=${language}&cnt=${dayCount}&units=${units}&appid=${id}`;
+    const countryUrl = 'https://oktravel.herokuapp.com/countries';
+    const currencyUrl = `https://api.exchangeratesapi.io/latest?base=${currencyName}`;
+    const weatherUrlBase = 'https://api.openweathermap.org/data/2.5/forecast?';
+    const weatherUrl = `${weatherUrlBase}lat=${latitude}&lon=${longitude}&lang=${language}&cnt=${dayCount}&units=${units}&appid=${id}`;
 
     Promise.all([
-      fetch(url).then((res) => res.json()),
-      fetch(url2).then((res) => res.json()),
-      fetch(url3).then((res) => res.json()),
+      fetch(countryUrl).then((res) => res.json()),
+      fetch(currencyUrl).then((res) => res.json()),
+      fetch(weatherUrl).then((res) => res.json()),
     ]).then(
       ([country, exchangeRatesInf, weather]) => {
+        console.log(country);
         const weatherState = weather.list[0];
         const { rates } = exchangeRatesInf;
         setCountryInf({ country, rates, weatherState });

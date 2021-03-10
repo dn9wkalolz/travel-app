@@ -13,7 +13,7 @@ const Weather = ({ weatherState }) => {
       <div className="weather__temperature" />
       <div className="weather__forecast">
         <div className="weather__cloudy">
-          <img src={getIcon(main)} alt="clouds" width="150" height="150" />
+          <img src={getIcon(main)} alt={main} width="150" height="150" />
         </div>
         <div className="weather__description">
           <span>{description}</span>

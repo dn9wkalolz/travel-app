@@ -7,7 +7,7 @@ const CountryDescription = ({ countryInf }) => {
   return (
     <div className="country__description">
       <div>
-        <img src={mainImage} width="250" height="170" alt="country" />
+        <img src={mainImage} width="250" height="170" alt={alt} />
         <p>{alt}</p>
       </div>
       <div>

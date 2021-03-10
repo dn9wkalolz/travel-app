@@ -1,0 +1,54 @@
+@import url('https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css');
+
+.country {
+    &__container {
+        display: flex;
+    }
+    &__information,&__widgets {
+        display: flex;
+        flex-direction: column;
+    }
+    &__information {
+        flex-basis: 74%;
+    }
+    &__widgets {
+        flex-basis: 25%;
+        &__exchange {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+    &__description {
+        display: flex;
+    }
+}
+
+.map-container {
+    position: absolute;
+    width: 600px;
+    height: 500px;
+}
+     
+.sidebar {
+    width: 600px;
+    background-color: rgba(35, 55, 75, 0.9);
+    color: #ffffff;
+    border-radius: 4px;
+}
+
+.weather {
+    &__forecast {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &__description {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+h3,.country__widgets__datatime {
+    text-align: center;
+}

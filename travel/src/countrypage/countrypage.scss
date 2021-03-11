@@ -3,6 +3,8 @@
 
 * {
   font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+  line-height: 25px;
 }
 
 .country {
@@ -13,13 +15,61 @@
   &__widgets {
     display: flex;
     flex-direction: column;
+    position: relative;
+    &_button {
+      text-align: center;
+      cursor: pointer;
+      @media screen and (min-width: 768px) {
+        display: none;
+      }
+    }
+
+    &_block {
+      padding: 10px;
+      padding-bottom: 0;
+      margin-left: 10px;
+      position: fixed;
+      background-color: LightGray;
+      box-shadow: 3px 3px 7px darkgray;
+      border-radius: 10px;
+      width: 190px;
+      transition: all 0.2s;
+
+      @media screen and (max-width: 768px) {
+        top: -550px;
+        right: 32px;
+      }
+      @media screen and (max-width: 600px) {
+        right: 24px;
+      }
+
+      &_active {
+        @media screen and (max-width: 768px) {
+          top: -550px;
+          right: 32px;
+          transform: translateY(94%);
+          transition: all 0.2s;
+        }
+        @media screen and (max-width: 600px) {
+          right: 24px;
+        }
+      }
+    }
   }
   &__information {
-    flex-basis: 74%;
+    width: calc(100% - 200px);
     padding-bottom: 20px;
+
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
   }
   &__widgets {
-    flex-basis: 25%;
+    width: 200px;
+    @media screen and (max-width: 768px) {
+      width: 0;
+    }
+
     &__exchange {
       display: flex;
       flex-direction: column;
@@ -29,9 +79,10 @@
   &__description {
     &_town_name {
       text-align: center;
+      color: #131313;
     }
     &_text {
-      margin: 50px 0;
+      margin: 35px 0;
       text-align: justify;
       text-indent: 20px;
     }
@@ -60,7 +111,7 @@
   padding-left: 5px;
   width: 100%;
   background-color: rgba(35, 55, 75, 0.9);
-  color: #ffffff;
+  color: #fafafa;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
@@ -80,4 +131,24 @@
 h3,
 .country__widgets__datatime {
   text-align: center;
+  margin: 10px;
+}
+
+.flag {
+  width: 25px;
+  height: 15px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: inline-block;
+
+  &__eu {
+    background-image: url("./flag-icon/eu.png");
+  }
+
+  &__us {
+    background-image: url("./flag-icon/us.png");
+  }
+  &__ru {
+    background-image: url("./flag-icon/ru.png");
+  }
 }

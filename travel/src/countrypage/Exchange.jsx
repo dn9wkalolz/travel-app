@@ -6,9 +6,20 @@ const Exchange = ({ rates }) => {
   return (
     <div className="country__widgets__exchange">
       <h3>Country Exchange Rate</h3>
-      <span>{`EUR: ${EUR.toFixed(2)}`}</span>
-      <span>{`USD: ${USD.toFixed(2)}`}</span>
-      <span>{`RUB: ${RUB.toFixed(2)}`}</span>
+      <div>
+        <div>
+          <div className="flag flag__eu" />
+          <span>{`EUR: ${EUR.toFixed(2)}`}</span>
+        </div>
+        <div>
+          <div className="flag flag__us" />
+          <span>{`USD: ${USD.toFixed(2)}`}</span>
+        </div>
+        <div>
+          <div className="flag flag__ru" />
+          <span>{`RUB: ${RUB.toFixed(2)}`}</span>
+        </div>
+      </div>
     </div>
   );
 };

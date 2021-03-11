@@ -47,11 +47,11 @@ const Gallery = ({ countryInf }) => {
           <div className="image_wrapper">
             {galleryImages.map((item, index) => (
               <div
-                className={index === count ? 'gallery_image_shown gallery_image' : 'gallery_image'}
+                className={screen.active ? 'gallery_image_fullscreen' : 'gallery_image'}
                 key={item.mainImage}
                 itemID={index}
               >
-                <img height="100%" src={item.mainImage} alt={item.alt} />
+                <img className={index === count ? 'gallery_img_show gallery_img' : 'gallery_img'} src={item.mainImage} alt={item.alt} />
               </div>
             ))}
             <div className="caption_container">

@@ -62,17 +62,13 @@ const Gallery = ({ countryInf }) => {
             </div>
             <div
               className="button_prev"
-              onClick={() => {
-                countDecrease();
-              }}
+              onClick={countDecrease}
             >
               &#10094;
             </div>
             <div
               className="button_next"
-              onClick={() => {
-                countIncrease();
-              }}
+              onClick={countIncrease}
             >
               &#10095;
             </div>

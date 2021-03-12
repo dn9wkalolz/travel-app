@@ -9,15 +9,15 @@ import Exchange from './Exchange';
 import Weather from './Weather';
 
 const CountryWidgets = ({ data, countryInf }) => {
-  const { language, timeZone } = data;
-  const { rates, weatherState } = countryInf;
+  const { language } = data;
+  const { rates, weatherState, country: { timezone } } = countryInf;
   const [isOpen, isOpenChange] = useState(false);
   return (
     <div className="country__widgets">
       <div className={isOpen ? 'country__widgets_block country__widgets_block_active' : 'country__widgets_block'}>
-        <DataTime {...{ language, timeZone }} />
-        <Weather {...{ weatherState }} />
-        <Exchange {...{ rates }} />
+        <DataTime {...{ language, timezone }} />
+        <Weather {...{ language, weatherState }} />
+        <Exchange {...{ language, rates }} />
         <div className="country__widgets_button" onClick={() => isOpenChange(!isOpen)}>
           {isOpen ? <KeyboardArrowUpIcon fontSize="large" /> : <KeyboardArrowDownIcon fontSize="large" />}
         </div>

@@ -59,7 +59,7 @@ const CountryMap = ({ data }) => {
   }, []);
 
   return (
-    <div>
+    <div className="map_wrapper">
       <div className="sidebar">
         {` Longitude: ${lng} | Latitude: ${lat} | Zoom: ${zoom}`}
       </div>

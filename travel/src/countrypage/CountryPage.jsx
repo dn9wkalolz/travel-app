@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import Container from '@material-ui/core/Container';
 import CountryDescription from './CountryDescription';
 import CountryMap from './CountryMap';
 import CountryWidgets from './CountryWidgets';
 import './countrypage.scss';
+import Gallery from './Gallery/Gallery';
+import Video from './Video/Video';
 
 const data = {
   countryName: 'POL',
@@ -59,13 +62,17 @@ const CountryPage = () => {
     return <div>Загрузка...</div>;
   }
   return (
-    <div className="country__container">
-      <div className="country__information">
-        <CountryDescription {...{ countryInf }} />
-        <CountryMap {...{ data }} />
+    <Container>
+      <div className="country__container">
+        <div className="country__information">
+          <CountryDescription {...{ countryInf }} />
+          <Gallery {...{ countryInf }} />
+          <Video {...{ countryInf }} />
+          <CountryMap {...{ data }} />
+        </div>
+        <CountryWidgets {...{ data, countryInf }} />
       </div>
-      <CountryWidgets {...{ data, countryInf }} />
-    </div>
+    </Container>
   );
 };
 

@@ -6,10 +6,12 @@ import CountryWidgets from './CountryWidgets';
 import './countrypage.scss';
 import Gallery from './Gallery/Gallery';
 import Video from './Video/Video';
+import CountryRating from './Rating';
 
 const data = {
   language: 'en',
   id: '6043d483656ac305b15f314c',
+  rating: 3,
 };
 
 const CountryPage = () => {
@@ -64,6 +66,7 @@ const CountryPage = () => {
       <div className="country__container">
         <div className="country__information">
           <CountryDescription {...{ countryInf }} />
+          <CountryRating {...{ data }} />
           <Gallery {...{ countryInf }} />
           <Video {...{ countryInf }} />
           <CountryMap {...{ data, countryInf }} />

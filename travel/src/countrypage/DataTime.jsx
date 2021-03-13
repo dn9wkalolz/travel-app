@@ -28,7 +28,7 @@ const DataTime = ({ language, timezone }) => {
 
   return (
     <div className="country__widgets__datatime">
-      <h3>{getPhrase(language, 'currentTime')}</h3>
+      <h3 data-testid="currenttime">{getPhrase(language, 'currentTime')}</h3>
       <span>{time}</span>
     </div>
   );

@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom'
 import { userAPI } from './api/api'
 import './App.css'
+import CountryPage from './components/countrypage/CountryPage'
 import Footer from './components/Footer/Footer'
 import GridLayout from './components/GridLayout/GridLayout'
 import NavigationBar from './components/NavigationBar/NavigationBar'
@@ -63,12 +64,7 @@ function App() {
               exact
               path='/countries/:countryId?'
               render={() => {
-                return (
-                  <div>
-                    <h1>Contry</h1>
-                    <h2>Contry</h2>
-                  </div>
-                )
+                return <CountryPage lang={lang} />
               }}
             />
             <Route

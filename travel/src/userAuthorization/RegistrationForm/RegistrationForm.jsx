@@ -8,14 +8,13 @@ import { Form } from 'react-final-form';
 import { TextFieldInput } from '../TextFieldInput';
 import { TextFieldPassword } from '../TextFieldPassword';
 
-export const LoginForm = ({ onSubmit }) => (
+export const RegistrationForm = ({ onSubmit }) => (
   <Form onSubmit={onSubmit}>
     {({
       handleSubmit, invalid, submitting, form,
     }) => (
-
       <form onSubmit={(e) => handleSubmit(e).then(form.reset)}>
-        <span>Login</span>
+        <span>Registration</span>
         <Box>
           <FormControl margin="normal">
             <TextFieldInput
@@ -26,7 +25,6 @@ export const LoginForm = ({ onSubmit }) => (
                     <Box mx={1.5}>
                       <AccountCircle />
                     </Box>
-
                   </InputAdornment>
                 ),
               }}
@@ -39,6 +37,8 @@ export const LoginForm = ({ onSubmit }) => (
           </FormControl>
         </Box>
 
+        {/* TO_DO: add field for uploading user photo */}
+
         <Box my={1}>
           <Button color="primary" variant="contained" type="submit" disabled={invalid || submitting}>Submit</Button>
         </Box>
@@ -46,8 +46,9 @@ export const LoginForm = ({ onSubmit }) => (
       </form>
     )}
   </Form>
+
 );
 
-LoginForm.propTypes = {
+RegistrationForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };

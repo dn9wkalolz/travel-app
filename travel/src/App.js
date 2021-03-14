@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom'
 import { userAPI } from './api/api'
 import './App.css'
-import CountryPage from './components/countrypage/CountryPage'
+import CountryPage from './countrypage/CountryPage'
 import Footer from './components/Footer/Footer'
 import GridLayout from './components/GridLayout/GridLayout'
 import NavigationBar from './components/NavigationBar/NavigationBar'

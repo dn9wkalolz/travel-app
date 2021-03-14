@@ -6,6 +6,7 @@ import CountryWidgets from './CountryWidgets';
 import './countrypage.scss';
 import Gallery from './Gallery/Gallery';
 import Video from './Video/Video';
+import Preloader from './Preloader/Preloader';
 
 const data = {
   countryName: 'POL',
@@ -59,7 +60,7 @@ const CountryPage = () => {
       </div>
     );
   } if (!isLoaded) {
-    return <div>Загрузка...</div>;
+    return <Preloader />;
   }
   return (
     <Container>

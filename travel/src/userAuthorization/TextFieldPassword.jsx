@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { InputAdornment, IconButton } from '@material-ui/core';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import { TextFieldInput } from './TextFieldInput';
+import { minLengthValidation } from './formValidation';
 
 export const TextFieldPassword = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -18,6 +19,7 @@ export const TextFieldPassword = () => {
     <TextFieldInput
       name="password"
       type={showPassword ? 'text' : 'password'}
+      validate={minLengthValidation(4)}
       inputProps={{
         startAdornment: (
           <InputAdornment position="end">

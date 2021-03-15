@@ -7,6 +7,7 @@ import { AccountCircle } from '@material-ui/icons';
 import { Form } from 'react-final-form';
 import { TextFieldInput } from '../TextFieldInput';
 import { TextFieldPassword } from '../TextFieldPassword';
+import { minLengthValidation } from '../formValidation';
 
 export const LoginForm = ({ onSubmit }) => (
   <Form onSubmit={onSubmit}>
@@ -15,11 +16,11 @@ export const LoginForm = ({ onSubmit }) => (
     }) => (
 
       <form onSubmit={(e) => handleSubmit(e).then(form.reset)}>
-        <span>Login</span>
         <Box>
           <FormControl margin="normal">
             <TextFieldInput
               name="login"
+              validate={minLengthValidation(4)}
               inputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
@@ -40,7 +41,7 @@ export const LoginForm = ({ onSubmit }) => (
         </Box>
 
         <Box my={1}>
-          <Button color="primary" variant="contained" type="submit" disabled={invalid || submitting}>Submit</Button>
+          <Button color="primary" variant="contained" type="submit" disabled={invalid || submitting}>Log in</Button>
         </Box>
 
       </form>

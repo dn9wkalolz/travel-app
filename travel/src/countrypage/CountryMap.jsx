@@ -7,7 +7,7 @@ import getPhrase from './languageSwitcher';
 mapboxgl.accessToken = 'pk.eyJ1IjoiZmFudG9td2Fsa2VyIiwiYSI6ImNramxmcXd2eTIyc2Iyc2xvcTJ3cmdsNmwifQ.mU8FFb3Kc3cihmCMAk6Spw';
 
 const CountryMap = ({ data, countryInf }) => {
-  const { language } = data;
+  const { lang } = data;
   const { country } = countryInf;
   const { alpha3Code, location: { lat, long } } = country;
   const mapContainer = useRef();
@@ -52,17 +52,17 @@ const CountryMap = ({ data, countryInf }) => {
 
       const labelList = map.getStyle().layers.filter((layer) => /-label/.test(layer.id));
       labelList.forEach((labelLayer) => {
-        map.setLayoutProperty(labelLayer.id, 'text-field', ['coalesce', ['get', `name_${language}`], ['get', 'name']]);
+        map.setLayoutProperty(labelLayer.id, 'text-field', ['coalesce', ['get', `name_${lang}`], ['get', 'name']]);
       });
     });
 
     return () => map.remove();
-  }, [language]);
+  }, [lang]);
 
   return (
     <div className="map_wrapper">
       <div className="sidebar">
-        {`${getPhrase(language, 'lng')}: ${longitude} | ${getPhrase(language, 'lat')}: ${latitude} | ${getPhrase(language, 'zoom')}: ${zoom}`}
+        {`${getPhrase(lang, 'lng')}: ${longitude} | ${getPhrase(lang, 'lat')}: ${latitude} | ${getPhrase(lang, 'zoom')}: ${zoom}`}
       </div>
       <div className="map-container" ref={mapContainer} />
     </div>

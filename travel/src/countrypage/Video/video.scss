@@ -9,11 +9,11 @@
 
   &_wrapper {
     position: relative;
-    height: 400px;
+    height: auto;
     margin: 50px 0;
 
     @media screen and (max-width: 768px) {
-      height: 250px;
+      height: auto;
       margin-top: 50px;
     }
   }

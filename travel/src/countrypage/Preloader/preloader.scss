@@ -1,65 +1,65 @@
 .preloader {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    background-color: #293133;
-    top: -150%;
-    left: 0;
-    transition: top 0.3s;
-    z-index: 1000;
-    box-shadow: 0 5px 3px 1px black;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: #293133;
+  top: -150%;
+  left: 0;
+  transition: top 0.3s;
+  z-index: 1000;
+  box-shadow: 0 5px 3px 1px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &_active {
+    top: 0;
+  }
+
+  &_wrapper {
+    position: relative;
+    width: 200px;
+    height: 200px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-  
-    &_active {
-      top: 0;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  &_item {
+    width: 30px;
+    background-color: ivory;
+    
+
+    &_1 {
+      animation: grow 2s ease-out 0.3s infinite;
     }
-  
-    &_wrapper {
-      position: relative;
-      width: 200px;
-      height: 200px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
+    &_2 {
+      animation: grow 3s ease-out 0.3s infinite;
     }
-  
-    &_item {
-      width: 30px;
-      background-color: ivory;
-      
-  
-      &_1 {
-        animation: grow 2s ease-out 0.3s infinite;
-      }
-      &_2 {
-        animation: grow 3s ease-out 0.3s infinite;
-      }
-      &_3 {
-        animation: grow 2.5s ease-out 0.3s infinite;
-      }
-      &_4 {
-        animation: grow 1s ease-out 0.3s infinite;
-      }
-      &_5 {
-        animation: grow 3.5s ease-out 0.3s infinite;
-      }
+    &_3 {
+      animation: grow 2.5s ease-out 0.3s infinite;
     }
+    &_4 {
+      animation: grow 1s ease-out 0.3s infinite;
+    }
+    &_5 {
+      animation: grow 3.5s ease-out 0.3s infinite;
+    }
+  }
 }
-  
-  
-  
+
+
+
 @keyframes grow {
-    from {
-        height: 1%;
-    }
+  from {
+    height: 1%;
+  }
 
-    50% {
-        height: 70%;
-    }
+  50% {
+    height: 70%;
+  }
 
-    to {
-        height: 1%;
-    }
+  to {
+    height: 1%;
+  }
 }

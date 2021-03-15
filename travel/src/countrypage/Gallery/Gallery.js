@@ -27,7 +27,7 @@ const useStyles = makeStyles(() => ({
 const Gallery = ({ countryInf }) => {
   const [count, setCount] = useState(0);
   const { country } = countryInf;
-  const { galleryImages } = country[0];
+  const { galleryImages } = country;
   const classes = useStyles();
   const screen = useFullscreen();
   const countDecrease = () => {

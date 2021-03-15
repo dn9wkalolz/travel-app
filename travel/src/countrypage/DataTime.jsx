@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import getPhrase from './languageSwitcher';
 
-const DataTime = ({ language, timeZone }) => {
+const DataTime = ({ lang, timezone }) => {
   const [time, setTime] = useState('');
 
   const tick = () => {
     const date = new Date();
     const options = {
-      timeZone,
+      timeZone: timezone,
       year: 'numeric',
       month: 'long',
       day: 'numeric',
@@ -17,25 +18,25 @@ const DataTime = ({ language, timeZone }) => {
       second: 'numeric',
       timeZoneName: 'short',
     };
-    setTime(date.toLocaleString(language, options));
+    setTime(date.toLocaleString(lang, options));
   };
 
   useEffect(() => {
     const timer = setInterval(tick, 1000);
     return () => clearInterval(timer);
-  }, []);
+  }, [lang]);
 
   return (
     <div className="country__widgets__datatime">
-      <h3>Current Time</h3>
+      <h3 data-testid="currenttime">{getPhrase(lang, 'currentTime')}</h3>
       <span>{time}</span>
     </div>
   );
 };
 
 DataTime.propTypes = {
-  language: PropTypes.string.isRequired,
-  timeZone: PropTypes.string.isRequired,
+  lang: PropTypes.string.isRequired,
+  timezone: PropTypes.string.isRequired,
 };
 
 export default DataTime;

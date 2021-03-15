@@ -1,14 +1,15 @@
-import React from 'react'
-import Card from '@material-ui/core/Card'
-import CardHeader from '@material-ui/core/CardHeader'
-import CardMedia from '@material-ui/core/CardMedia'
-import CardContent from '@material-ui/core/CardContent'
-import CardActions from '@material-ui/core/CardActions'
-import Typography from '@material-ui/core/Typography'
-import { makeStyles } from '@material-ui/core/styles'
-import IconButton from '@material-ui/core/IconButton'
-import ArrowForward from '@material-ui/icons/ArrowForward'
-import { Link } from 'react-router-dom'
+/* eslint-disable react/prop-types */
+import React from 'react';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import ArrowForward from '@material-ui/icons/ArrowForward';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -19,7 +20,7 @@ const useStyles = makeStyles(() => ({
   cardImage: {
     height: 300,
   },
-}))
+}));
 
 export default function GridItem({
   title,
@@ -29,7 +30,7 @@ export default function GridItem({
   subheader,
   alt,
 }) {
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
     <Card className={classes.card}>
@@ -47,11 +48,11 @@ export default function GridItem({
 
       <CardActions>
         <Link to={`/countries/${id}`}>
-          <IconButton aria-label='Visit page'>
+          <IconButton aria-label="Visit page">
             <ArrowForward />
           </IconButton>
         </Link>
       </CardActions>
     </Card>
-  )
+  );
 }

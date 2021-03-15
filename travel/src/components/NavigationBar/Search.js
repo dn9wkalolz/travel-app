@@ -1,7 +1,8 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import SearchIcon from '@material-ui/icons/Search'
-import { TextField } from '@material-ui/core'
+/* eslint-disable react/prop-types */
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import SearchIcon from '@material-ui/icons/Search';
+import { TextField } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   searchContainer: {
@@ -20,10 +21,10 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(0.8),
     color: theme.palette.common.white,
   },
-}))
+}));
 
 export default function Search({ onChange }) {
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
     <div className={classes.searchContainer}>
@@ -32,9 +33,9 @@ export default function Search({ onChange }) {
         onChange={onChange}
         className={classes.searchInput}
         inputProps={{ 'aria-label': 'description' }}
-        placeholder='Search'
+        placeholder="Search"
         // color='inhe'
       />
     </div>
-  )
+  );
 }

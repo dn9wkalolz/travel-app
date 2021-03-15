@@ -29,6 +29,7 @@
       padding-bottom: 0;
       margin-left: 10px;
       position: fixed;
+      z-index: 50;
       background-color: LightGray;
       box-shadow: 3px 3px 7px darkgray;
       border-radius: 10px;
@@ -125,6 +126,7 @@
   &__description {
     display: flex;
     flex-direction: column;
+    text-align: center;
   }
 }
 

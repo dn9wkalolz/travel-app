@@ -1,53 +1,55 @@
-import React, { useEffect, useState } from 'react'
-import Container from '@material-ui/core/Container'
-import CountryDescription from './CountryDescription'
-import CountryMap from './CountryMap'
-import CountryWidgets from './CountryWidgets'
-import './countrypage.scss'
-import Gallery from './Gallery/Gallery'
-import Video from './Video/Video'
+import React, { useEffect, useState } from 'react';
+import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import Container from '@material-ui/core/Container';
+import CountryDescription from './CountryDescription';
+import CountryMap from './CountryMap';
+import CountryWidgets from './CountryWidgets';
+import './countrypage.scss';
+import Gallery from './Gallery/Gallery';
+import Video from './Video/Video';
+import Preloader from './Preloader/Preloader';
+import CountryRating from './Rating';
 
 const data = {
-  countryName: 'POL',
-  longitude: 21.0118,
-  latitude: 52.2298,
-  language: 'en',
-  timeZone: 'Europe/Warsaw',
-  currencyName: 'PLN',
-}
+  rating: 3,
+};
 
-const CountryPage = ({ lang }) => {
-  const [error, setError] = useState(null)
-  const [isLoaded, setIsLoaded] = useState(false)
-  const [countryInf, setCountryInf] = useState({})
+const CountryPage = ({ lang, match }) => {
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [countryInf, setCountryInf] = useState({});
 
   useEffect(() => {
-    const { longitude, latitude, currencyName } = data
-    const dayCount = 1
-    const id = '238369625c38823901147f9e59ee369d'
-    const units = 'metric'
-    const countryUrl = 'https://oktravel.herokuapp.com/countries'
-    const currencyUrl = `https://api.exchangeratesapi.io/latest?base=${currencyName}`
-    const weatherUrlBase = 'https://api.openweathermap.org/data/2.5/forecast?'
-    const weatherUrl = `${weatherUrlBase}lat=${latitude}&lon=${longitude}&lang=${lang}&cnt=${dayCount}&units=${units}&appid=${id}`
+    const { params: { countryId } } = match;
+    const dayCount = 1;
+    const units = 'metric';
+    const weatherId = '238369625c38823901147f9e59ee369d';
+    const weatherUrlBase = 'https://api.openweathermap.org/data/2.5/forecast?';
+    const countryUrl = `https://oktravel.herokuapp.com/countries/${countryId}?lang=${lang}`;
 
-    Promise.all([
-      fetch(countryUrl).then((res) => res.json()),
-      fetch(currencyUrl).then((res) => res.json()),
-      fetch(weatherUrl).then((res) => res.json()),
-    ]).then(
-      ([country, exchangeRatesInf, weather]) => {
-        const weatherState = weather.list[0]
-        const { rates } = exchangeRatesInf
-        setCountryInf({ country, rates, weatherState })
-        setIsLoaded(true)
-      },
-      (err) => {
-        setIsLoaded(true)
-        setError(err)
-      }
-    )
-  }, [])
+    fetch(countryUrl).then((res) => res.json())
+      .then((country) => {
+        const { currencyCode, location: { lat, long } } = country;
+        const currencyUrl = `https://api.exchangeratesapi.io/latest?base=${currencyCode}`;
+        const weatherUrl = `${weatherUrlBase}lat=${lat}&lon=${long}&lang=${lang}&cnt=${dayCount}&units=${units}&appid=${weatherId}`;
+        Promise.all([
+          fetch(currencyUrl).then((res) => res.json()),
+          fetch(weatherUrl).then((res) => res.json()),
+        ]).then(
+          ([exchangeRatesInf, weather]) => {
+            const weatherState = weather.list[0];
+            const { rates } = exchangeRatesInf;
+            setCountryInf({ country, rates, weatherState });
+            setIsLoaded(true);
+          },
+          (err) => {
+            setIsLoaded(true);
+            setError(err);
+          },
+        );
+      });
+  }, [lang]);
 
   if (error) {
     return (
@@ -55,24 +57,29 @@ const CountryPage = ({ lang }) => {
         Ошибка:
         {error.message}
       </div>
-    )
-  }
-  if (!isLoaded) {
-    return <div>Загрузка...</div>
+    );
+  } if (!isLoaded) {
+    return <Preloader />;
   }
   return (
     <Container>
-      <div className='country__container'>
-        <div className='country__information'>
+      <div className="country__container">
+        <div className="country__information">
           <CountryDescription {...{ countryInf }} />
+          <CountryRating {...{ data }} />
           <Gallery {...{ countryInf }} />
           <Video {...{ countryInf }} />
-          <CountryMap {...{ data }} />
+          <CountryMap {...{ lang, countryInf }} />
         </div>
-        <CountryWidgets {...{ data, countryInf }} />
+        <CountryWidgets {...{ lang, countryInf }} />
       </div>
     </Container>
-  )
-}
+  );
+};
 
-export default CountryPage
+CountryPage.propTypes = {
+  lang: PropTypes.string.isRequired,
+  match: PropTypes.instanceOf(Object).isRequired,
+};
+
+export default withRouter(CountryPage);

@@ -1,44 +1,42 @@
-import { Container } from '@material-ui/core'
-import { useEffect, useState } from 'react'
+import { Container } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
 import {
   BrowserRouter as Router,
   Redirect,
   Route,
   Switch,
-} from 'react-router-dom'
-import { userAPI } from './api/api'
-import './App.css'
-import CountryPage from './countrypage/CountryPage'
-import Footer from './components/Footer/Footer'
-import GridLayout from './components/GridLayout/GridLayout'
-import NavigationBar from './components/NavigationBar/NavigationBar'
+} from 'react-router-dom';
+import { userAPI } from './api/api';
+import CountryPage from './countrypage/CountryPage';
+import Footer from './components/Footer/Footer';
+import GridLayout from './components/GridLayout/GridLayout';
+import NavigationBar from './components/NavigationBar/NavigationBar';
 
 function App() {
-  const [data, setData] = useState(null)
-  const [filter, setFilter] = useState('')
-  const [lang, setLang] = useState('en')
+  const [data, setData] = useState(null);
+  const [filter, setFilter] = useState('');
+  const [lang, setLang] = useState('en');
 
   const handleLanguageChange = (event) => {
-    setLang(event.target.value)
-  }
+    setLang(event.target.value);
+  };
 
   const handleSearchChange = (e) => {
-    setFilter(e.target.value)
-    console.log('Filter: ', filter)
-  }
+    setFilter(e.target.value);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await userAPI.getCountries(lang)
+      const result = await userAPI.getCountries(lang);
 
-      setData(result)
-    }
+      setData(result);
+    };
 
-    fetchData()
-  }, [lang])
+    fetchData();
+  }, [lang]);
 
   return (
-    <div className='App'>
+    <div className="App">
       <NavigationBar
         onChange={handleSearchChange}
         lang={lang}
@@ -50,25 +48,21 @@ function App() {
           <Switch>
             <Route
               exact
-              path='/'
-              render={() => <Redirect from='/' to='/countries' />}
+              path="/"
+              render={() => <Redirect from="/" to="/countries" />}
             />
             <Route
               exact
-              path='/countries'
-              render={() => {
-                return <GridLayout countries={data} filter={filter} />
-              }}
+              path="/countries"
+              render={() => <GridLayout countries={data} filter={filter} />}
             />
             <Route
               exact
-              path='/countries/:countryId?'
-              render={() => {
-                return <CountryPage lang={lang} />
-              }}
+              path="/countries/:countryId?"
+              render={() => <CountryPage lang={lang} />}
             />
             <Route
-              path='*'
+              path="*"
               render={() => (
                 <div>
                   <h1>404 not found</h1>
@@ -81,15 +75,13 @@ function App() {
 
       <Footer />
     </div>
-  )
+  );
 }
 
-const AppContainer = () => {
-  return (
-    <Router>
-      <App />
-    </Router>
-  )
-}
+const AppContainer = () => (
+  <Router>
+    <App />
+  </Router>
+);
 
-export default AppContainer
+export default AppContainer;

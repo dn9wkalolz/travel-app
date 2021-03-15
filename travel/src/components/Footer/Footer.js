@@ -1,7 +1,10 @@
-import { Grid, Typography, Icon, Link } from '@material-ui/core'
-import { GitHub } from '@material-ui/icons'
-import logoRsSchool from '../../assets/images/rs_school-logo.svg'
-import { makeStyles } from '@material-ui/core/styles'
+import React from 'react';
+import {
+  Grid, Typography, Icon, Link,
+} from '@material-ui/core';
+import { GitHub } from '@material-ui/icons';
+import { makeStyles } from '@material-ui/core/styles';
+import logoRsSchool from '../../assets/images/rs_school-logo.svg';
 
 const useStyles = makeStyles((theme) => ({
   companyInformation: {
@@ -25,20 +28,20 @@ const useStyles = makeStyles((theme) => ({
   copyright: {
     marginTop: theme.spacing(4),
   },
-}))
+}));
 
 export default function Footer() {
-  const classes = useStyles()
+  const classes = useStyles();
 
   return (
     <footer className={classes.footer}>
       <Grid container>
         <Grid item lg={6} md={10} sm={12} xs={12}>
-          <Link href='https://rs.school'>
+          <Link href="https://rs.school">
             <img
               className={classes.logoRsSchool}
               src={logoRsSchool}
-              alt='logoRsSchool'
+              alt="logoRsSchool"
             />
           </Link>
         </Grid>
@@ -49,29 +52,30 @@ export default function Footer() {
           lg={6}
           md={10}
           sm={12}
-          xs={12}>
+          xs={12}
+        >
           <Typography>Building by:</Typography>
           <Grid item>
             <Icon className={classes.icon}>
-              <Link href='https://github.com/nottombraider'>
+              <Link href="https://github.com/nottombraider">
                 <GitHub />
               </Link>
             </Icon>
 
             <Icon className={classes.icon}>
-              <Link href='https://github.com/dn9wkalolz'>
+              <Link href="https://github.com/dn9wkalolz">
                 <GitHub />
               </Link>
             </Icon>
 
             <Icon className={classes.icon}>
-              <Link href='https://github.com/AndreiMilashevich'>
+              <Link href="https://github.com/AndreiMilashevich">
                 <GitHub />
               </Link>
             </Icon>
 
             <Icon className={classes.icon}>
-              <Link href='https://github.com/AlDemi'>
+              <Link href="https://github.com/AlDemi">
                 <GitHub />
               </Link>
             </Icon>
@@ -79,10 +83,10 @@ export default function Footer() {
         </Grid>
         <Grid item lg={12} md={12} sm={12} xs={12}>
           <Typography className={classes.copyright}>
-            {'© ' + new Date().getFullYear() + ' oktravel'}
+            {`© ${new Date().getFullYear()} oktravel`}
           </Typography>
         </Grid>
       </Grid>
     </footer>
-  )
+  );
 }

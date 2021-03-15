@@ -1,12 +1,13 @@
 import React from 'react';
+import { Grid } from '@material-ui/core';
 import { LoginForm, loginFormSubmitHandler } from './LoginForm';
 import { RegistrationForm } from './RegistrationForm/RegistrationForm';
 import { registrationFormSubmitHandler } from './RegistrationForm/registrationFormSubmitHandler';
-import './userAuthorization.scss';
 
 export const UserAuthorization = () => (
-  <div className="user-authorization__container">
+  <Grid container justify="space-around" spacing={5}>
     <RegistrationForm onSubmit={registrationFormSubmitHandler} />
     <LoginForm onSubmit={loginFormSubmitHandler} />
-  </div>
+  </Grid>
+
 );

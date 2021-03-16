@@ -21,8 +21,8 @@ function App() {
     setLang(event.target.value);
   };
 
-  const handleSearchChange = (e) => {
-    setFilter(e.target.value);
+  const handleSearchChange = (value) => {
+    setFilter(value);
   };
 
   useEffect(() => {
@@ -38,7 +38,7 @@ function App() {
   return (
     <div className="App">
       <NavigationBar
-        onChange={handleSearchChange}
+        handleSearchChange={handleSearchChange}
         lang={lang}
         handleLanguageChange={handleLanguageChange}
       />

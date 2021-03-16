@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function NavigationBar({
-  onChange, lang, handleLanguageChange, location,
+  handleSearchChange, lang, handleLanguageChange, location,
 }) {
   const [state, setState] = useState({
     toggleMenu: false,
@@ -129,7 +129,7 @@ function NavigationBar({
 
   const getToggleMenuOptions = () => (
     <Box>
-      {isNavBarVisible && <Search onChange={onChange} />}
+      {isNavBarVisible && <Search handleSearchChange={handleSearchChange} />}
 
       <MenuItem>
         <Button className={classes.menuOption} size="medium">
@@ -159,7 +159,7 @@ function NavigationBar({
       </Typography>
 
       <Box className={classes.menuBox}>
-        {isNavBarVisible && <Search onChange={onChange} />}
+        {isNavBarVisible && <Search handleSearchChange={handleSearchChange} />}
         <SelectLang lang={lang} handleLanguageChange={handleLanguageChange} />
 
         <MenuItem>

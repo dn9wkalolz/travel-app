@@ -53,5 +53,5 @@ export default function SelectLang({ lang, handleLanguageChange }) {
 
 SelectLang.propTypes = {
   handleLanguageChange: PropTypes.func.isRequired,
-  lang: PropTypes.bool.isRequired,
+  lang: PropTypes.string.isRequired,
 };

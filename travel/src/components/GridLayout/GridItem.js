@@ -61,7 +61,7 @@ GridItem.propTypes = {
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   subheader: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
 };

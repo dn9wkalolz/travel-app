@@ -13,7 +13,7 @@ import GridLayout from './components/GridLayout/GridLayout';
 import NavigationBar from './components/NavigationBar/NavigationBar';
 
 function App() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
   const [filter, setFilter] = useState('');
   const [lang, setLang] = useState('en');
 

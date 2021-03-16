@@ -194,7 +194,7 @@ function NavigationBar({
 NavigationBar.propTypes = {
   handleSearchChange: PropTypes.func.isRequired,
   handleLanguageChange: PropTypes.func.isRequired,
-  lang: PropTypes.bool.isRequired,
+  lang: PropTypes.string.isRequired,
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired,
   }).isRequired,

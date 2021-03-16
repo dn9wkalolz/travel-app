@@ -11,6 +11,7 @@ import CountryPage from './countrypage/CountryPage';
 import Footer from './components/Footer/Footer';
 import GridLayout from './components/GridLayout/GridLayout';
 import NavigationBar from './components/NavigationBar/NavigationBar';
+import { UserAuthorization } from './userAuthorization/UserAuthorization';
 
 function App() {
   const [data, setData] = useState([]);
@@ -63,6 +64,11 @@ function App() {
               exact
               path="/countries"
               render={() => <GridLayout countries={data} filter={filter} />}
+            />
+            <Route
+              exact
+              path="/login"
+              render={() => <UserAuthorization />}
             />
             <Route
               exact

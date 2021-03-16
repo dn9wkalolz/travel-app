@@ -10,6 +10,7 @@ import {
   MenuItem,
   Drawer,
   Button,
+  Link,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/core/styles';
@@ -131,9 +132,9 @@ function NavigationBar({
           <MenuIcon className={classes.menuIcon} />
         </IconButton>
         <Typography component="h1" variant="h5" className={classes.siteTitle}>
-          <NavLink className={classes.link} to="/countries">
+          <Link className={classes.link} to="/countries">
             oktravel
-          </NavLink>
+          </Link>
         </Typography>
         <SelectLang lang={lang} handleLanguageChange={handleLanguageChange} />
 
@@ -163,22 +164,16 @@ function NavigationBar({
         <SelectLang lang={lang} handleLanguageChange={handleLanguageChange} />
 
         <MenuItem>
-          <Button className={classes.menuOption} size="medium" href="/login">
-            <NavLink className={classes.link} to="/login">
-              Sign in
-            </NavLink>
-          </Button>
-        </MenuItem>
-
-        <MenuItem>
-          <Button
+          <NavLink
+            // component="button"
             className={classes.menuOption}
             variant="outlined"
             color="inherit"
-            size="medium"
+            // size="medium"
+            to="/login"
           >
-            Sign up
-          </Button>
+            Login
+          </NavLink>
         </MenuItem>
       </Box>
     </Toolbar>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Container from '@material-ui/core/Container';
 import CountryDescription from './CountryDescription';
@@ -12,8 +12,6 @@ import Preloader from './Preloader/Preloader';
 import CountryRating from './Rating';
 
 const data = {
-  lang: 'en',
-  countryId: '6043d483656ac305b15f314c',
   rating: 3,
 };
 
@@ -23,7 +21,6 @@ const CountryPage = ({ lang, match }) => {
   const [countryInf, setCountryInf] = useState({});
 
   useEffect(() => {
-    // const { lang, id } = data;
     const { params: { countryId } } = match;
     const dayCount = 1;
     const units = 'metric';
@@ -33,7 +30,6 @@ const CountryPage = ({ lang, match }) => {
 
     fetch(countryUrl).then((res) => res.json())
       .then((country) => {
-        console.log(country);
         const { currencyCode, location: { lat, long } } = country;
         const currencyUrl = `https://api.exchangeratesapi.io/latest?base=${currencyCode}`;
         const weatherUrl = `${weatherUrlBase}lat=${lat}&lon=${long}&lang=${lang}&cnt=${dayCount}&units=${units}&appid=${weatherId}`;
@@ -53,7 +49,7 @@ const CountryPage = ({ lang, match }) => {
           },
         );
       });
-  }, []);
+  }, [lang]);
 
   if (error) {
     return (
@@ -73,9 +69,9 @@ const CountryPage = ({ lang, match }) => {
           <CountryRating {...{ data }} />
           <Gallery {...{ countryInf }} />
           <Video {...{ countryInf }} />
-          <CountryMap {...{ data, countryInf }} />
+          <CountryMap {...{ lang, countryInf }} />
         </div>
-        <CountryWidgets {...{ data, countryInf }} />
+        <CountryWidgets {...{ lang, countryInf }} />
       </div>
     </Container>
   );
@@ -86,5 +82,4 @@ CountryPage.propTypes = {
   match: PropTypes.instanceOf(Object).isRequired,
 };
 
-const CountryPageWithRouter = withRouter(CountryPage);
-export default CountryPageWithRouter;
+export default withRouter(CountryPage);

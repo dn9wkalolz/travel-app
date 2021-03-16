@@ -8,8 +8,7 @@ import DataTime from './DataTime';
 import Exchange from './Exchange';
 import Weather from './Weather';
 
-const CountryWidgets = ({ data, countryInf }) => {
-  const { lang } = data;
+const CountryWidgets = ({ lang, countryInf }) => {
   const { rates, weatherState, country: { timezone } } = countryInf;
   const [isOpen, isOpenChange] = useState(false);
   return (
@@ -28,7 +27,7 @@ const CountryWidgets = ({ data, countryInf }) => {
 };
 
 CountryWidgets.propTypes = {
-  data: PropTypes.instanceOf(Object).isRequired,
+  lang: PropTypes.string.isRequired,
   countryInf: PropTypes.instanceOf(Object).isRequired,
 };
 

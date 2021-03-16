@@ -6,8 +6,7 @@ import getPhrase from './languageSwitcher';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZmFudG9td2Fsa2VyIiwiYSI6ImNramxmcXd2eTIyc2Iyc2xvcTJ3cmdsNmwifQ.mU8FFb3Kc3cihmCMAk6Spw';
 
-const CountryMap = ({ data, countryInf }) => {
-  const { lang } = data;
+const CountryMap = ({ lang, countryInf }) => {
   const { country } = countryInf;
   const { alpha3Code, location: { lat, long } } = country;
   const mapContainer = useRef();
@@ -70,7 +69,7 @@ const CountryMap = ({ data, countryInf }) => {
 };
 
 CountryMap.propTypes = {
-  data: PropTypes.instanceOf(Object).isRequired,
+  lang: PropTypes.string.isRequired,
   countryInf: PropTypes.instanceOf(Object).isRequired,
 };
 

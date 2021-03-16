@@ -17,8 +17,16 @@ function App() {
   const [filter, setFilter] = useState('');
   const [lang, setLang] = useState('en');
 
+  const currentLanguage = localStorage.getItem('selectedLanguage');
+
+  if (!localStorage.getItem('selectedLanguage')) {
+    setLang('en');
+    localStorage.setItem('selectedLanguage', lang);
+  }
+
   const handleLanguageChange = (event) => {
     setLang(event.target.value);
+    localStorage.setItem('selectedLanguage', event.target.value);
   };
 
   const handleSearchChange = (value) => {
@@ -27,19 +35,19 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await userAPI.getCountries(lang);
+      const result = await userAPI.getCountries(currentLanguage);
 
       setData(result);
     };
 
     fetchData();
-  }, [lang]);
+  }, [lang, currentLanguage]);
 
   return (
     <div className="App">
       <NavigationBar
         handleSearchChange={handleSearchChange}
-        lang={lang}
+        lang={currentLanguage}
         handleLanguageChange={handleLanguageChange}
       />
 
@@ -59,7 +67,7 @@ function App() {
             <Route
               exact
               path="/countries/:countryId?"
-              render={() => <CountryPage lang={lang} />}
+              render={() => <CountryPage lang={currentLanguage} />}
             />
             <Route
               path="*"

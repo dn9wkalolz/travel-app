@@ -1,8 +1,8 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import { CircularProgress } from '@material-ui/core';
+import PropTypes from 'prop-types';
 import GridItem from './GridItem';
 
 const useStyles = makeStyles((theme) => ({
@@ -45,3 +45,8 @@ export default function GridLayout({ countries, filter }) {
     </Grid>
   );
 }
+
+GridLayout.propTypes = {
+  countries: PropTypes.arrayOf(PropTypes.object).isRequired,
+  filter: PropTypes.string.isRequired,
+};

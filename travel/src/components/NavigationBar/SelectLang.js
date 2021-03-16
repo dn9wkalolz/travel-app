@@ -1,10 +1,10 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import LanguageIcon from '@material-ui/icons/Language';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -50,3 +50,8 @@ export default function SelectLang({ lang, handleLanguageChange }) {
     </div>
   );
 }
+
+SelectLang.propTypes = {
+  handleLanguageChange: PropTypes.func.isRequired,
+  lang: PropTypes.bool.isRequired,
+};

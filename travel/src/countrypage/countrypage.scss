@@ -1,6 +1,10 @@
 @import url("https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,900&display=swap");
 
+body {
+  margin: 0;
+}
+
 * {
   font-family: "Roboto", sans-serif;
   box-sizing: border-box;
@@ -9,13 +13,16 @@
 
 .country {
   &__container {
+    margin-top: 120px;
     display: flex;
   }
+
   &__information,
   &__widgets {
     display: flex;
     flex-direction: column;
     position: relative;
+    
     &_button {
       text-align: center;
       cursor: pointer;
@@ -37,22 +44,29 @@
       transition: all 0.2s;
 
       @media screen and (max-width: 768px) {
-        top: -550px;
-        right: 32px;
+        top: -460px;
+        right: 48px;
+        background-color: #2f2f2f;
+        color: white;
       }
+
       @media screen and (max-width: 600px) {
-        right: 24px;
+        top: -470px;
+        right: 32px;
       }
 
       &_active {
         @media screen and (max-width: 768px) {
           top: -550px;
-          right: 32px;
-          transform: translateY(94%);
+          right: 48px;
+          transform: translateY(110%);
           transition: all 0.2s;
+          background-color: LightGray;
+          color:#2f2f2f;
         }
+
         @media screen and (max-width: 600px) {
-          right: 24px;
+          right: 32px;
         }
       }
     }
@@ -67,6 +81,7 @@
   }
   &__widgets {
     width: 200px;
+
     @media screen and (max-width: 768px) {
       width: 0;
     }
@@ -77,11 +92,13 @@
       align-items: center;
     }
   }
+
   &__description {
     &_town_name {
       text-align: center;
       color: #131313;
     }
+
     &_text {
       margin: 35px 0;
       text-align: justify;
@@ -99,6 +116,7 @@
     position: relative;
     height: 400px;
   }
+
   &-container {
     position: absolute;
     width: 100%;
@@ -108,6 +126,7 @@
     border-bottom-right-radius: 5px;
   }
 }
+
 .sidebar {
   padding-left: 5px;
   width: 100%;
@@ -123,6 +142,7 @@
     flex-direction: column;
     align-items: center;
   }
+
   &__description {
     display: flex;
     flex-direction: column;

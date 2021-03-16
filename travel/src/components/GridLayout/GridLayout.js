@@ -1,9 +1,9 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
-import { CircularProgress } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import GridItem from './GridItem';
+import Preloader from '../../countrypage/Preloader/Preloader';
 
 const useStyles = makeStyles((theme) => ({
   GridContainer: {
@@ -14,8 +14,8 @@ const useStyles = makeStyles((theme) => ({
 export default function GridLayout({ countries, filter }) {
   const classes = useStyles();
 
-  if (!countries) {
-    return <CircularProgress />;
+  if (countries.length === 0) {
+    return <Preloader />;
   }
 
   return (

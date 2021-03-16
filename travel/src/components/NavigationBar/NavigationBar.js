@@ -1,6 +1,4 @@
-/* eslint-disable no-use-before-define */
-/* eslint-disable max-len */
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import {
   Container,
@@ -93,10 +91,35 @@ function NavigationBar({
 
   const classes = useStyles();
 
-  const displayToggleMenu = () => {
-    const handleToggleMenuOpen = () => setState((prevState) => ({ ...prevState, toggleMenuOpen: true }));
+  const getToggleMenuOptions = () => (
+    <Box>
+      {isNavBarVisible && <Search handleSearchChange={handleSearchChange} />}
 
-    const handleToggleMenuClose = () => setState((prevState) => ({ ...prevState, toggleMenuOpen: false }));
+      <MenuItem>
+        <Button className={classes.menuOption} size="medium">
+          Sign in
+        </Button>
+      </MenuItem>
+
+      <MenuItem>
+        <Button
+          className={classes.menuOption}
+          variant="outlined"
+          color="inherit"
+          size="medium"
+        >
+          Sign up
+        </Button>
+      </MenuItem>
+    </Box>
+  );
+
+  const displayToggleMenu = () => {
+    const handleToggleMenuOpen = () => setState((prevState) => (
+      { ...prevState, toggleMenuOpen: true }));
+
+    const handleToggleMenuClose = () => setState((prevState) => (
+      { ...prevState, toggleMenuOpen: false }));
 
     return (
       <Toolbar className={classes.toolbarSmall}>
@@ -126,29 +149,6 @@ function NavigationBar({
       </Toolbar>
     );
   };
-
-  const getToggleMenuOptions = () => (
-    <Box>
-      {isNavBarVisible && <Search handleSearchChange={handleSearchChange} />}
-
-      <MenuItem>
-        <Button className={classes.menuOption} size="medium">
-          Sign in
-        </Button>
-      </MenuItem>
-
-      <MenuItem>
-        <Button
-          className={classes.menuOption}
-          variant="outlined"
-          color="inherit"
-          size="medium"
-        >
-          Sign up
-        </Button>
-      </MenuItem>
-    </Box>
-  );
 
   const displayLargeMenu = () => (
     <Toolbar className={classes.toolbarLarge}>
@@ -190,5 +190,14 @@ function NavigationBar({
     </Container>
   );
 }
+
+NavigationBar.propTypes = {
+  handleSearchChange: PropTypes.func.isRequired,
+  handleLanguageChange: PropTypes.func.isRequired,
+  lang: PropTypes.bool.isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default withRouter(NavigationBar);

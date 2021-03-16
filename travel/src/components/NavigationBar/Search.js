@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types';
 import React, { useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
@@ -65,3 +65,7 @@ export default function Search({ handleSearchChange }) {
     </Paper>
   );
 }
+
+Search.propTypes = {
+  handleSearchChange: PropTypes.func.isRequired,
+};

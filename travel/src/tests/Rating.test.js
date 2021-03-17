@@ -1,11 +1,16 @@
 import React from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import { act } from 'react-dom/test-utils';
-import DataTime from '../countrypage/DataTime';
+import CountryRating from '../countrypage/Rating';
 
-const lang = 'en';
-const timezone = 'Europe/Minsk';
 let container = null;
+const countryInf = {
+  country: {
+    image: {
+      alt: 'Moscow, Russia',
+    },
+  },
+};
 
 beforeEach(() => {
   container = document.createElement('div');
@@ -18,9 +23,9 @@ afterEach(() => {
   container = null;
 });
 
-it('render DataTime component with props', () => {
+it('render rating component', () => {
   act(() => {
-    render(<DataTime {...{ lang, timezone }} />, container);
+    render(<CountryRating {...{ countryInf }} />, container);
   });
-  expect(container.querySelector('[data-testid="currenttime"]').textContent).toBe('Current Time');
+  expect(container.querySelector('[data-testid="rating"]').textContent).toBe('Rating');
 });

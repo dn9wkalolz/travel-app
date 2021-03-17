@@ -9,7 +9,7 @@ const rates = {
   USD: 10.222,
   RUB: 100.555,
 };
-const language = 'en';
+const lang = 'en';
 
 beforeEach(() => {
   container = document.createElement('div');
@@ -24,7 +24,7 @@ afterEach(() => {
 
 it('render exchange rate with props', () => {
   act(() => {
-    render(<Exchange {...{ language, rates }} />, container);
+    render(<Exchange {...{ lang, rates }} />, container);
   });
   expect(container.querySelector('[data-testid="USD"]').textContent).toBe(`USD: ${rates.USD.toFixed(2)}`);
   expect(container.querySelector('[data-testid="EUR"]').textContent).toBe(`EUR: ${rates.EUR.toFixed(2)}`);

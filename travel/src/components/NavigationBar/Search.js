@@ -36,6 +36,7 @@ export default function Search({ handleSearchChange, lang }) {
 
   const handleOnChange = (e) => {
     searchInputValue.current = e.target.value;
+    handleSearchChange(e.target.value);
   };
 
   const onSearchButtonClick = () => {

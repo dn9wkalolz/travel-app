@@ -42,7 +42,7 @@ function App() {
     };
 
     fetchData();
-  }, [lang, currentLanguage]);
+  }, [lang, currentLanguage, filter]);
 
   return (
     <div className="App">

@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   footer: {
     padding: theme.spacing(6),
     backgroundColor: '#2f2f2f',
-    color: 'white',
+    color: theme.palette.common.white,
     marginTop: theme.spacing(10),
   },
   icon: {

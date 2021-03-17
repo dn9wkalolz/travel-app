@@ -1,25 +1,16 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import GridItem from './GridItem';
 import Preloader from '../../countrypage/Preloader/Preloader';
 
-const useStyles = makeStyles((theme) => ({
-  GridContainer: {
-    marginTop: theme.spacing(14),
-  },
-}));
-
 export default function GridLayout({ countries, filter }) {
-  const classes = useStyles();
-
   if (countries.length === 0) {
     return <Preloader />;
   }
 
   return (
-    <Grid container spacing={3} className={classes.GridContainer}>
+    <Grid container spacing={3}>
       {countries.map((country) => {
         const check = country.name.toLowerCase().includes(filter)
           || country.capital.toLowerCase().includes(filter);

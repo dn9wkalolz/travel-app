@@ -1,4 +1,3 @@
-import { Container } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import {
   BrowserRouter as Router,
@@ -7,6 +6,7 @@ import {
   Switch,
 } from 'react-router-dom';
 import { userAPI } from './api/api';
+import MainContainer from './components/MainContainer/MainContainer';
 import CountryPage from './countrypage/CountryPage';
 import Footer from './components/Footer/Footer';
 import GridLayout from './components/GridLayout/GridLayout';
@@ -52,40 +52,38 @@ function App() {
         handleLanguageChange={handleLanguageChange}
       />
 
-      <Container>
-        <main>
-          <Switch>
-            <Route
-              exact
-              path="/"
-              render={() => <Redirect from="/" to="/countries" />}
-            />
-            <Route
-              exact
-              path="/countries"
-              render={() => <GridLayout countries={data} filter={filter} />}
-            />
-            <Route
-              exact
-              path="/login"
-              render={() => <UserAuthorization />}
-            />
-            <Route
-              exact
-              path="/countries/:countryId?"
-              render={() => <CountryPage lang={currentLanguage} />}
-            />
-            <Route
-              path="*"
-              render={() => (
-                <div>
-                  <h1>404 not found</h1>
-                </div>
-              )}
-            />
-          </Switch>
-        </main>
-      </Container>
+      <MainContainer>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() => <Redirect from="/" to="/countries" />}
+          />
+          <Route
+            exact
+            path="/countries"
+            render={() => <GridLayout countries={data} filter={filter} />}
+          />
+          <Route
+            exact
+            path="/login"
+            render={() => <UserAuthorization />}
+          />
+          <Route
+            exact
+            path="/countries/:countryId?"
+            render={() => <CountryPage lang={currentLanguage} />}
+          />
+          <Route
+            path="*"
+            render={() => (
+              <div>
+                <h1>404 not found</h1>
+              </div>
+            )}
+          />
+        </Switch>
+      </MainContainer>
 
       <Footer />
     </div>

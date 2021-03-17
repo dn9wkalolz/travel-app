@@ -165,11 +165,9 @@ function NavigationBar({
 
         <MenuItem>
           <NavLink
-            // component="button"
             className={classes.menuOption}
             variant="outlined"
             color="inherit"
-            // size="medium"
             to="/login"
           >
             Login

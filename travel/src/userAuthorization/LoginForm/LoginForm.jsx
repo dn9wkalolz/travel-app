@@ -18,10 +18,14 @@ export const LoginForm = ({ onSubmit }) => {
       <Typography variant="h5" component="h2">Log in</Typography>
       <Form onSubmit={onSubmit}>
         {({
-          handleSubmit, invalid, submitting, form,
+          handleSubmit, invalid, submitting, form, pristine,
         }) => (
 
-          <form onSubmit={(e) => handleSubmit(e).then(form.reset && history.push('/'))}>
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            handleSubmit(e).then(() => history.push('/')).catch(form.reset);
+          }}
+          >
             <Box>
               <FormControl margin="normal">
                 <TextFieldInput
@@ -47,7 +51,7 @@ export const LoginForm = ({ onSubmit }) => {
             </Box>
 
             <Box my={1}>
-              <Button color="primary" variant="contained" type="submit" disabled={invalid || submitting}>Log in</Button>
+              <Button color="primary" variant="contained" type="submit" disabled={invalid || pristine || submitting}>Log in</Button>
             </Box>
 
           </form>

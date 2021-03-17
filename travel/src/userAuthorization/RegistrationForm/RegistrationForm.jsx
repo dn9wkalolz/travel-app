@@ -14,7 +14,7 @@ export const RegistrationForm = ({ onSubmit }) => (
     <Typography variant="h5" component="h2">Registration</Typography>
     <Form onSubmit={onSubmit}>
       {({
-        handleSubmit, invalid, submitting, form,
+        handleSubmit, invalid, submitting, form, pristine,
       }) => (
 
         <form onSubmit={(e) => handleSubmit(e).then(form.reset)}>
@@ -48,7 +48,7 @@ export const RegistrationForm = ({ onSubmit }) => (
               color="primary"
               variant="contained"
               type="submit"
-              disabled={invalid || submitting}
+              disabled={invalid || pristine || submitting}
             >
               Register
             </Button>

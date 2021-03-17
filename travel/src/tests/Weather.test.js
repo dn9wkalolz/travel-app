@@ -13,7 +13,7 @@ const weatherState = {
   }],
   wind: { speed: 6.84 },
 };
-const language = 'en';
+const lang = 'en';
 
 beforeEach(() => {
   container = document.createElement('div');
@@ -28,7 +28,7 @@ afterEach(() => {
 
 it('renders weather with props', () => {
   act(() => {
-    render(<Weather {...{ language, weatherState }} />, container);
+    render(<Weather {...{ lang, weatherState }} />, container);
   });
   expect(container.querySelector('[data-testid="description"]').textContent).toBe('light snow');
   expect(container.querySelector('[data-testid="humidity"]').textContent).toBe('humidity: 78%');

@@ -54,7 +54,7 @@ export default function Footer() {
           sm={12}
           xs={12}
         >
-          <Typography>Building by:</Typography>
+          <Typography data-testid="building">Building by:</Typography>
           <Grid item>
             <Icon className={classes.icon}>
               <Link href="https://github.com/nottombraider">

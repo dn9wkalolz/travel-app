@@ -41,7 +41,7 @@ const CountryRating = ({ countryId, countryInf }) => {
 
   return (
     <div className="rating">
-      <Typography component="legend">Rating</Typography>
+      <Typography component="legend" data-testid="rating">Rating</Typography>
       <Rating
         name="simple-controlled"
         readOnly={isTokenExisting}

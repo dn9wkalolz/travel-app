@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 export const TextFieldInput = ({
   name, inputProps, validate, ...props
 }) => {
-  const { input, meta } = useField(name, { validate });
+  const { input, meta } = useField(name, { validate, initialValue: undefined });
   const isError = Boolean(meta.error);
 
   return (

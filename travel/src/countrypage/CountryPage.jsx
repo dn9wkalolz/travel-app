@@ -11,17 +11,13 @@ import Video from './Video/Video';
 import Preloader from './Preloader/Preloader';
 import CountryRating from './Rating';
 
-const data = {
-  rating: 3,
-};
-
 const CountryPage = ({ lang, match }) => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [countryInf, setCountryInf] = useState({});
+  const { params: { countryId } } = match;
 
   useEffect(() => {
-    const { params: { countryId } } = match;
     const dayCount = 1;
     const units = 'metric';
     const weatherId = '238369625c38823901147f9e59ee369d';
@@ -66,7 +62,7 @@ const CountryPage = ({ lang, match }) => {
       <div className="country__container">
         <div className="country__information">
           <CountryDescription {...{ countryInf }} />
-          <CountryRating {...{ data }} />
+          <CountryRating {...{ countryId, countryInf }} />
           <Gallery {...{ countryInf }} />
           <Video {...{ countryInf }} />
           <CountryMap {...{ lang, countryInf }} />

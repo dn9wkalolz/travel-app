@@ -154,3 +154,14 @@ h3,
     background-image: url("./flag-icon/ru.png");
   }
 }
+
+.rating {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  &__error {
+    font-size: 10px;
+    background: #c51244;
+    box-shadow: 1px 1px 1px #aaaaaa;
+  }
+}

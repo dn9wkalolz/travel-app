@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
-  FormControl, Button, Box, InputAdornment, Typography,
+  FormControl, Button, Box, InputAdornment, Typography, Snackbar,
 } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
+import MuiAlert from '@material-ui/lab/Alert';
 import { Form } from 'react-final-form';
 import { TextFieldInput } from '../TextFieldInput';
 import { TextFieldPassword } from '../TextFieldPassword';
@@ -12,6 +13,15 @@ import { minLengthValidation } from '../formValidation';
 
 export const LoginForm = ({ onSubmit }) => {
   const history = useHistory();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClose = (_, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setIsOpen(false);
+  };
 
   return (
     <Box>
@@ -23,7 +33,10 @@ export const LoginForm = ({ onSubmit }) => {
 
           <form onSubmit={(e) => {
             e.preventDefault();
-            handleSubmit(e).then(() => history.push('/')).catch(form.reset);
+            handleSubmit(e).then(() => history.push('/')).catch(() => {
+              setIsOpen(true);
+              form.reset();
+            });
           }}
           >
             <Box>
@@ -53,6 +66,10 @@ export const LoginForm = ({ onSubmit }) => {
             <Box my={1}>
               <Button color="primary" variant="contained" type="submit" disabled={invalid || pristine || submitting}>Log in</Button>
             </Box>
+
+            <Snackbar open={isOpen} autoHideDuration={6000} onClose={handleClose}>
+              <MuiAlert elevation={6} variant="filled" severity="error" onClose={handleClose}>Sorry, such a user does not exist</MuiAlert>
+            </Snackbar>
 
           </form>
         )}

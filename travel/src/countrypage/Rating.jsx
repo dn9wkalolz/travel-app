@@ -11,7 +11,6 @@ const CountryRating = ({ countryId, countryInf }) => {
   const [error, setError] = useState(null);
 
   function createRating(vote) {
-    console.log(vote, countryId);
     const countryUrl = `https://oktravel.herokuapp.com/countries/${countryId}/vote`;
     const myHeaders = new Headers();
     myHeaders.append('Authorization', sessionStorage.getItem('authToken'));

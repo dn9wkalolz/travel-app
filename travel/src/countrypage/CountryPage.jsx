@@ -26,7 +26,6 @@ const CountryPage = ({ lang, match }) => {
 
     fetch(countryUrl).then((res) => res.json())
       .then((country) => {
-        console.log(country);
         const { currencyCode, location: { lat, long } } = country;
         const currencyUrl = `https://api.exchangeratesapi.io/latest?base=${currencyCode}`;
         const weatherUrl = `${weatherUrlBase}lat=${lat}&lon=${long}&lang=${lang}&cnt=${dayCount}&units=${units}&appid=${weatherId}`;

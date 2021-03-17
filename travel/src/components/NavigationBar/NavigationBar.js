@@ -10,7 +10,6 @@ import {
   MenuItem,
   Drawer,
   Button,
-  Link,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/core/styles';
@@ -66,6 +65,11 @@ const useStyles = makeStyles((theme) => ({
   menuIcon: {
     color: theme.palette.common.white,
   },
+  toggleMenu: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    padding: theme.spacing(1),
+  },
 }));
 
 function NavigationBar({
@@ -76,9 +80,26 @@ function NavigationBar({
     toggleMenuOpen: false,
   });
 
-  const isNavBarVisible = location.pathname === '/countries';
+  const isAuthToken = Boolean(sessionStorage.getItem('authToken'));
+
+  const [isAuth, setIsAuth] = useState(isAuthToken);
+
+  const isSearchVisible = location.pathname === '/countries';
 
   const { toggleMenu, toggleMenuOpen } = state;
+
+  const removeToken = () => {
+    sessionStorage.clear();
+    setIsAuth(false);
+  };
+
+  useEffect(() => {
+    if (isAuthToken) {
+      setIsAuth(true);
+    } else {
+      setIsAuth(false);
+    }
+  }, [isAuthToken]);
 
   useEffect(() => {
     const setResponsiveness = () => (window.innerWidth < 960
@@ -93,25 +114,33 @@ function NavigationBar({
   const classes = useStyles();
 
   const getToggleMenuOptions = () => (
-    <Box>
-      {isNavBarVisible && <Search handleSearchChange={handleSearchChange} lang={lang} />}
+    <Box className={classes.toggleMenu}>
+      {isSearchVisible && <Search handleSearchChange={handleSearchChange} lang={lang} />}
 
-      <MenuItem>
-        <Button className={classes.menuOption} size="medium">
-          Sign in
-        </Button>
-      </MenuItem>
-
-      <MenuItem>
-        <Button
-          className={classes.menuOption}
-          variant="outlined"
-          color="inherit"
-          size="medium"
-        >
-          Sign up
-        </Button>
-      </MenuItem>
+      {
+          !isAuth && (
+            <Button
+              variant="contained"
+              onClick={removeToken}
+              color="primary"
+            >
+              <NavLink className={classes.link} to="/login">
+                Login
+              </NavLink>
+            </Button>
+          )
+        }
+      {
+          isAuth && (
+            <Button
+              variant="contained"
+              onClick={removeToken}
+              color="primary"
+            >
+              Logout
+            </Button>
+          )
+        }
     </Box>
   );
 
@@ -132,9 +161,9 @@ function NavigationBar({
           <MenuIcon className={classes.menuIcon} />
         </IconButton>
         <Typography component="h1" variant="h5" className={classes.siteTitle}>
-          <Link className={classes.link} to="/countries">
+          <NavLink className={classes.link} to="/countries">
             oktravel
-          </Link>
+          </NavLink>
         </Typography>
         <SelectLang lang={lang} handleLanguageChange={handleLanguageChange} />
 
@@ -160,19 +189,41 @@ function NavigationBar({
       </Typography>
 
       <Box className={classes.menuBox}>
-        {isNavBarVisible && <Search handleSearchChange={handleSearchChange} lang={lang} />}
+        {isSearchVisible && <Search handleSearchChange={handleSearchChange} lang={lang} />}
         <SelectLang lang={lang} handleLanguageChange={handleLanguageChange} />
 
-        <MenuItem>
-          <NavLink
-            className={classes.menuOption}
-            variant="outlined"
-            color="inherit"
-            to="/login"
-          >
-            Login
-          </NavLink>
-        </MenuItem>
+        {
+          !isAuth && (
+            <MenuItem>
+              <Button
+                className={classes.menuOption}
+                variant="outlined"
+                color="inherit"
+                size="medium"
+                onClick={removeToken}
+              >
+                <NavLink className={classes.link} to="/login">
+                  Login
+                </NavLink>
+              </Button>
+            </MenuItem>
+          )
+        }
+        {
+          isAuth && (
+            <MenuItem>
+              <Button
+                className={classes.menuOption}
+                variant="outlined"
+                color="inherit"
+                size="medium"
+                onClick={removeToken}
+              >
+                Logout
+              </Button>
+            </MenuItem>
+          )
+        }
       </Box>
     </Toolbar>
   );

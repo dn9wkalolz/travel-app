@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: theme.spacing(16),
+    minHeight: 'calc(100vh - 380px)',
   },
 }));
 

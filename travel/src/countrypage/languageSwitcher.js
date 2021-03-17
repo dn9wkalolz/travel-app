@@ -13,6 +13,8 @@ const languageTemplate = {
     lng: 'Longitude',
     lat: 'Latitude',
     zoom: 'Zoom',
+    searchPlaceholder: 'Search',
+    designedBy: 'Designed by',
   },
   ru: {
     currentTime: 'Текущее Время',
@@ -28,6 +30,8 @@ const languageTemplate = {
     lng: 'Долгота',
     lat: 'Широта',
     zoom: 'Масштаб',
+    searchPlaceholder: 'Поиск',
+    designedBy: 'Разработано',
   },
   pl: {
     currentTime: 'Obecny Czas',
@@ -43,6 +47,8 @@ const languageTemplate = {
     lng: 'Długość geograficzna',
     lat: 'Szerokość',
     zoom: 'Powiększenie',
+    searchPlaceholder: 'Szukaj',
+    designedBy: 'Zaprojektowany przez',
   },
 };
 

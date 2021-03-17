@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -10,6 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowForward from '@material-ui/icons/ArrowForward';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles(() => ({
   card: {
@@ -56,3 +56,12 @@ export default function GridItem({
     </Card>
   );
 }
+
+GridItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  subheader: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+};

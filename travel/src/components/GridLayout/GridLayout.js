@@ -1,25 +1,16 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
-import { CircularProgress } from '@material-ui/core';
+import PropTypes from 'prop-types';
 import GridItem from './GridItem';
-
-const useStyles = makeStyles((theme) => ({
-  GridContainer: {
-    marginTop: theme.spacing(14),
-  },
-}));
+import Preloader from '../../countrypage/Preloader/Preloader';
 
 export default function GridLayout({ countries, filter }) {
-  const classes = useStyles();
-
-  if (!countries) {
-    return <CircularProgress />;
+  if (countries.length === 0) {
+    return <Preloader />;
   }
 
   return (
-    <Grid container spacing={3} className={classes.GridContainer}>
+    <Grid container spacing={3}>
       {countries.map((country) => {
         const check = country.name.toLowerCase().includes(filter)
           || country.capital.toLowerCase().includes(filter);
@@ -45,3 +36,8 @@ export default function GridLayout({ countries, filter }) {
     </Grid>
   );
 }
+
+GridLayout.propTypes = {
+  countries: PropTypes.arrayOf(PropTypes.object).isRequired,
+  filter: PropTypes.string.isRequired,
+};

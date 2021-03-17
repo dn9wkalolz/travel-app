@@ -1,6 +1,4 @@
-/* eslint-disable no-use-before-define */
-/* eslint-disable max-len */
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import {
   Container,
@@ -12,6 +10,7 @@ import {
   MenuItem,
   Drawer,
   Button,
+  Link,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import { makeStyles } from '@material-ui/core/styles';
@@ -70,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function NavigationBar({
-  onChange, lang, handleLanguageChange, location,
+  handleSearchChange, lang, handleLanguageChange, location,
 }) {
   const [state, setState] = useState({
     toggleMenu: false,
@@ -93,43 +92,9 @@ function NavigationBar({
 
   const classes = useStyles();
 
-  const displayToggleMenu = () => {
-    const handleToggleMenuOpen = () => setState((prevState) => ({ ...prevState, toggleMenuOpen: true }));
-
-    const handleToggleMenuClose = () => setState((prevState) => ({ ...prevState, toggleMenuOpen: false }));
-
-    return (
-      <Toolbar className={classes.toolbarSmall}>
-        <IconButton
-          {...{
-            onClick: handleToggleMenuOpen,
-          }}
-        >
-          <MenuIcon className={classes.menuIcon} />
-        </IconButton>
-        <Typography component="h1" variant="h5" className={classes.siteTitle}>
-          <NavLink className={classes.link} to="/countries">
-            oktravel
-          </NavLink>
-        </Typography>
-        <SelectLang lang={lang} handleLanguageChange={handleLanguageChange} />
-
-        <Drawer
-          {...{
-            anchor: 'left',
-            open: toggleMenuOpen,
-            onClose: handleToggleMenuClose,
-          }}
-        >
-          <div>{getToggleMenuOptions()}</div>
-        </Drawer>
-      </Toolbar>
-    );
-  };
-
   const getToggleMenuOptions = () => (
     <Box>
-      {isNavBarVisible && <Search onChange={onChange} />}
+      {isNavBarVisible && <Search handleSearchChange={handleSearchChange} lang={lang} />}
 
       <MenuItem>
         <Button className={classes.menuOption} size="medium">
@@ -150,6 +115,42 @@ function NavigationBar({
     </Box>
   );
 
+  const displayToggleMenu = () => {
+    const handleToggleMenuOpen = () => setState((prevState) => (
+      { ...prevState, toggleMenuOpen: true }));
+
+    const handleToggleMenuClose = () => setState((prevState) => (
+      { ...prevState, toggleMenuOpen: false }));
+
+    return (
+      <Toolbar className={classes.toolbarSmall}>
+        <IconButton
+          {...{
+            onClick: handleToggleMenuOpen,
+          }}
+        >
+          <MenuIcon className={classes.menuIcon} />
+        </IconButton>
+        <Typography component="h1" variant="h5" className={classes.siteTitle}>
+          <Link className={classes.link} to="/countries">
+            oktravel
+          </Link>
+        </Typography>
+        <SelectLang lang={lang} handleLanguageChange={handleLanguageChange} />
+
+        <Drawer
+          {...{
+            anchor: 'left',
+            open: toggleMenuOpen,
+            onClose: handleToggleMenuClose,
+          }}
+        >
+          <div>{getToggleMenuOptions()}</div>
+        </Drawer>
+      </Toolbar>
+    );
+  };
+
   const displayLargeMenu = () => (
     <Toolbar className={classes.toolbarLarge}>
       <Typography component="h1" variant="h6" className={classes.siteTitle}>
@@ -159,26 +160,18 @@ function NavigationBar({
       </Typography>
 
       <Box className={classes.menuBox}>
-        {isNavBarVisible && <Search onChange={onChange} />}
+        {isNavBarVisible && <Search handleSearchChange={handleSearchChange} lang={lang} />}
         <SelectLang lang={lang} handleLanguageChange={handleLanguageChange} />
 
         <MenuItem>
-          <Button className={classes.menuOption} size="medium" href="/login">
-            <NavLink className={classes.link} to="/login">
-              Sign in
-            </NavLink>
-          </Button>
-        </MenuItem>
-
-        <MenuItem>
-          <Button
+          <NavLink
             className={classes.menuOption}
             variant="outlined"
             color="inherit"
-            size="medium"
+            to="/login"
           >
-            Sign up
-          </Button>
+            Login
+          </NavLink>
         </MenuItem>
       </Box>
     </Toolbar>
@@ -190,5 +183,14 @@ function NavigationBar({
     </Container>
   );
 }
+
+NavigationBar.propTypes = {
+  handleSearchChange: PropTypes.func.isRequired,
+  handleLanguageChange: PropTypes.func.isRequired,
+  lang: PropTypes.string.isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default withRouter(NavigationBar);

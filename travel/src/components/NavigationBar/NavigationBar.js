@@ -94,7 +94,7 @@ function NavigationBar({
 
   const getToggleMenuOptions = () => (
     <Box>
-      {isNavBarVisible && <Search handleSearchChange={handleSearchChange} />}
+      {isNavBarVisible && <Search handleSearchChange={handleSearchChange} lang={lang} />}
 
       <MenuItem>
         <Button className={classes.menuOption} size="medium">
@@ -160,7 +160,7 @@ function NavigationBar({
       </Typography>
 
       <Box className={classes.menuBox}>
-        {isNavBarVisible && <Search handleSearchChange={handleSearchChange} />}
+        {isNavBarVisible && <Search handleSearchChange={handleSearchChange} lang={lang} />}
         <SelectLang lang={lang} handleLanguageChange={handleLanguageChange} />
 
         <MenuItem>

@@ -1,10 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   Grid, Typography, Icon, Link,
 } from '@material-ui/core';
 import { GitHub } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 import logoRsSchool from '../../assets/images/rs_school-logo.svg';
+import getPhrase from '../../countrypage/languageSwitcher';
 
 const useStyles = makeStyles((theme) => ({
   companyInformation: {
@@ -30,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Footer() {
+export default function Footer({ lang }) {
   const classes = useStyles();
 
   return (
@@ -54,7 +56,10 @@ export default function Footer() {
           sm={12}
           xs={12}
         >
-          <Typography>Building by:</Typography>
+          <Typography>
+            {getPhrase(lang, 'designedBy')}
+            :
+          </Typography>
           <Grid item>
             <Icon className={classes.icon}>
               <Link href="https://github.com/nottombraider">
@@ -90,3 +95,7 @@ export default function Footer() {
     </footer>
   );
 }
+
+Footer.propTypes = {
+  lang: PropTypes.string.isRequired,
+};

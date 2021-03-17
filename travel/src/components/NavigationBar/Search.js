@@ -6,6 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
+import getPhrase from '../../countrypage/languageSwitcher';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Search({ handleSearchChange }) {
+export default function Search({ handleSearchChange, lang }) {
   const classes = useStyles();
 
   const searchInputValue = useRef('');
@@ -52,7 +53,7 @@ export default function Search({ handleSearchChange }) {
     <Paper component="form" className={classes.root}>
       <InputBase
         className={classes.input}
-        placeholder="Search"
+        placeholder={getPhrase(lang, 'searchPlaceholder')}
         inputProps={{ 'aria-label': 'search' }}
         onChange={handleOnChange}
         type="search"
@@ -69,4 +70,5 @@ export default function Search({ handleSearchChange }) {
 
 Search.propTypes = {
   handleSearchChange: PropTypes.func.isRequired,
+  lang: PropTypes.string.isRequired,
 };

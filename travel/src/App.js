@@ -85,7 +85,7 @@ function App() {
         </Switch>
       </MainContainer>
 
-      <Footer />
+      <Footer lang={currentLanguage} />
     </div>
   );
 }

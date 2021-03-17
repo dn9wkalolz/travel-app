@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import Axios from 'axios';
 
 const instance = Axios.create({

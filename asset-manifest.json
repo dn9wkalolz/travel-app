@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/dn9wkalolz/presentation/tree/main/Travel-App/static/css/main.3bbd876f.chunk.css",
+    "main.js": "/dn9wkalolz/presentation/tree/main/Travel-App/static/js/main.e6d2afa9.chunk.js",
+    "main.js.map": "/dn9wkalolz/presentation/tree/main/Travel-App/static/js/main.e6d2afa9.chunk.js.map",
+    "runtime-main.js": "/dn9wkalolz/presentation/tree/main/Travel-App/static/js/runtime-main.44254f31.js",
+    "runtime-main.js.map": "/dn9wkalolz/presentation/tree/main/Travel-App/static/js/runtime-main.44254f31.js.map",
+    "static/js/2.29b863f0.chunk.js": "/dn9wkalolz/presentation/tree/main/Travel-App/static/js/2.29b863f0.chunk.js",
+    "static/js/2.29b863f0.chunk.js.map": "/dn9wkalolz/presentation/tree/main/Travel-App/static/js/2.29b863f0.chunk.js.map",
+    "static/js/3.41ce2198.chunk.js": "/dn9wkalolz/presentation/tree/main/Travel-App/static/js/3.41ce2198.chunk.js",
+    "static/js/3.41ce2198.chunk.js.map": "/dn9wkalolz/presentation/tree/main/Travel-App/static/js/3.41ce2198.chunk.js.map",
+    "index.html": "/dn9wkalolz/presentation/tree/main/Travel-App/index.html",
+    "static/css/main.3bbd876f.chunk.css.map": "/dn9wkalolz/presentation/tree/main/Travel-App/static/css/main.3bbd876f.chunk.css.map",
+    "static/js/2.29b863f0.chunk.js.LICENSE.txt": "/dn9wkalolz/presentation/tree/main/Travel-App/static/js/2.29b863f0.chunk.js.LICENSE.txt",
+    "static/media/clear-day.320b497b.svg": "/dn9wkalolz/presentation/tree/main/Travel-App/static/media/clear-day.320b497b.svg",
+    "static/media/cloudy.8fa39863.svg": "/dn9wkalolz/presentation/tree/main/Travel-App/static/media/cloudy.8fa39863.svg",
+    "static/media/drizzle.8f834454.svg": "/dn9wkalolz/presentation/tree/main/Travel-App/static/media/drizzle.8f834454.svg",
+    "static/media/mist.849abfda.svg": "/dn9wkalolz/presentation/tree/main/Travel-App/static/media/mist.849abfda.svg",
+    "static/media/partly-cloudy-day.90f88a5e.svg": "/dn9wkalolz/presentation/tree/main/Travel-App/static/media/partly-cloudy-day.90f88a5e.svg",
+    "static/media/rain.a619711b.svg": "/dn9wkalolz/presentation/tree/main/Travel-App/static/media/rain.a619711b.svg",
+    "static/media/rs_school-logo.4c632dc7.svg": "/dn9wkalolz/presentation/tree/main/Travel-App/static/media/rs_school-logo.4c632dc7.svg",
+    "static/media/snow.444171ab.svg": "/dn9wkalolz/presentation/tree/main/Travel-App/static/media/snow.444171ab.svg",
+    "static/media/thunder.9d4b81cc.svg": "/dn9wkalolz/presentation/tree/main/Travel-App/static/media/thunder.9d4b81cc.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.44254f31.js",
+    "static/js/2.29b863f0.chunk.js",
+    "static/css/main.3bbd876f.chunk.css",
+    "static/js/main.e6d2afa9.chunk.js"
+  ]
+}
